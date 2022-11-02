@@ -1,0 +1,34 @@
+<h3>User Management</h3>
+<!-- <form action="">
+    Id: <input type="text" placeholder="Enter User Id" #frmId /><br/>
+    UserName: <input type="text" placeholder="Enter Username" #frmName /><br/>
+    Role: <input type="text" placeholder="Enter Role" #frmRole /><br/>
+    <button type="button" (click)="save(frmId.value,frmName.value,frmRole.value)">Save</button>
+</form> -->
+<form action="">
+    Id: <input type="text" placeholder="Enter User Id" name="txtId"[(ngModel)]="frmUser.uid" /><br/>
+    UserName: <input type="text" placeholder="Enter Username" name="txtName" [(ngModel)]="frmUser.uname"/><br/>
+    Role: <input type="text" placeholder="Enter Role" name="txtRole" [(ngModel)]="frmUser.urole" /><br/>
+    <button type="button"  (click)="save()">Save</button>
+
+</form>
+<br/>
+<search-text [searchLabel]="userSearch" (searchEvent)="handleEvent($event)"></search-text>
+<table class="table table-bordered">
+    <tr>
+        <th>User ID</th><th>UserName</th><th>User Role</th><th>Actions</th>
+    </tr>
+    <tr *ngFor="let user of filterUsers; let idx=index">
+        <td>{{user.uid}}</td>
+        <td>{{user.uname}}</td>
+        <td>{{user.urole}}</td>
+        <td>
+            <button class="btn btn-success" on-click="edit(user)">Edit</button>&nbsp;&nbsp;
+            <button class="btn btn-danger" (click)="delete(idx)">Delete</button>
+        </td>
+
+    </tr>
+    <tr *ngIf="users.length==0">
+        <td colspan="4">No Data Found</td>
+    </tr>
+</table>

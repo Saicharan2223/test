@@ -1,0 +1,43 @@
+<h3>Person Example</h3>
+<form action="">
+    Id: <input type="text" placeholder="Enter User Id" name="txtId"[(ngModel)]="frmPerson.uid" /><br/>
+    UserName: <input type="text" placeholder="Enter Username" name="txtName" [(ngModel)]="frmPerson.uname"/><br/>
+    Email: <input type="text" placeholder="Enter Email" name="txtEmail" [(ngModel)]="frmPerson.uemail" /><br/>
+    Date of Birth: <input type="date" placeholder="Enter Date of Birth" name="txtDob" [(ngModel)]="frmPerson.udob" /><br/>
+    Gender: <input type="radio" name="gender"[(ngModel)]="frmPerson.ugender" />Male
+    <input type="radio" name="gender"[(ngModel)]="frmPerson.ugender"/>Female<br/>
+    Country: <input type="text" placeholder="Enter Country" name="txtCountry" [(ngModel)]="frmPerson.ucountry" /><br/>
+
+    <button type="button" (click)="save()">Save</button>
+
+</form>
+<br/>
+<search-text [searchLabel]="userSearch"></search-text>
+<div class="card" style="width: 50rem;">
+<div class="card-body">
+    <div class="card-title">
+        Person Details
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Person Id</th><th>PersonName</th><th>Person Email</th><th>Person Date fo Birth</th><th>Person Gender</th><th>Person Country</th><th>Actions</th>
+        </tr>
+        <tr *ngFor="let person of persons; let idx=index">
+            <td>{{person.uid}}</td>
+            <td>{{person.uname}}</td>
+            <td>{{person.uemail}}</td>
+            <td>{{person.udob}}</td>
+            <td>{{person.ugender}}</td>
+            <td>{{person.ucountry}}</td>
+            <td>
+                <button class="btn btn-success" >Edit</button>&nbsp;&nbsp;
+                <button class="btn btn-danger" >Delete</button>
+            </td>
+    
+        </tr>
+        <tr *ngIf="persons.length==0">
+            <td colspan="4">No Data Found</td>
+        </tr>
+    </table>
+</div>
+</div>

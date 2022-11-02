@@ -1,0 +1,48 @@
+<p>templates-examples works!</p>
+<ng-content></ng-content>
+<ng-template [ngIf]="false" [ngIfElse]="elseBlock">
+    <h4>Heading 4 Information</h4>
+</ng-template>
+<ng-template #elseBlock>
+    <h4><b>Else Block</b></h4>
+</ng-template>
+<ng-template [ngIf]="true" [ngIfThen]="trueblock" [ngIfElse]="falseblock">
+checking
+</ng-template>
+<ng-template #trueblock>Hello</ng-template>
+<ng-template #falseblock>Welcome</ng-template>
+
+<div *ngFor="let name of ['Name1','Name2','Name1']">
+    {{name}}
+</div>
+<br/>
+<ng-template ngFor let-name [ngForOf]="['Temp1','Temp2','Temp3']" let-idx="index">
+<div>{{idx+1}}.{{name}}</div>
+</ng-template>
+<!-- Display the paid members clients-->
+<!-- <p *ngFor="let client of clients" *ngIf="client.paid">
+    {{client.name}}
+</p> -->
+
+<p *ngFor="let client of clients">
+    <b *ngIf="client.paid">
+        {{client.name}}
+    </b>
+</p>
+<!-- <ng-template #brand let-data let-n="name">
+<h3>{{n}}</h3>
+</ng-template> -->
+<!-- <ng-container *ngTemplateOutlet="brand; context:{name:'Reliance'}"></ng-container>
+<ng-container *ngTemplateOutlet="brand; context:{name:'Britania'}"></ng-container>
+<ng-container *ngTemplateOutlet="brand; context:{name:'BoAt'}"></ng-container> -->
+
+<ng-template #brand let-data>
+    <h3>{{data}}</h3>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="brand; context:{$implicit:'Reliance'}"></ng-container>
+<ng-container *ngTemplateOutlet="brand; context:{$implicit:'Britania'}"></ng-container>
+<ng-container *ngTemplateOutlet="brand; context:{$implicit:'BoAt'}"></ng-container>
+<hr>
+<date-viewer #dv></date-viewer>
+<br/>
+<h1 #h>Welcome</h1>
